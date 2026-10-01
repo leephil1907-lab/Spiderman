@@ -40,7 +40,7 @@ function Stats() {
   return (
     <section className="stats" aria-label="By the numbers">
       <div className="wrap stats-grid">
-        <div className="stat"><Clapperboard size={18} strokeWidth={1.75} aria-hidden="true" /><b>$<CountUp to={2.3} decimals={1} />B+</b><span>worldwide box office<small>{FILM.boxOfficeNote}</small></span></div>
+        <div className="stat"><Clapperboard size={18} strokeWidth={1.75} aria-hidden="true" /><b>$<CountUp to={2.4} decimals={1} />B+</b><span>worldwide box office<small>{FILM.boxOfficeNote}</small></span></div>
         <div className="stat"><Clock size={18} strokeWidth={1.75} aria-hidden="true" /><b><CountUp to={145} /></b><span>minutes of Spider-Man</span></div>
         <div className="stat"><CalendarDays size={18} strokeWidth={1.75} aria-hidden="true" /><b><CountUp to={10} /></b><span>years of Tom Holland’s Peter Parker</span></div>
         <div className="stat"><Globe2 size={18} strokeWidth={1.75} aria-hidden="true" /><b>{s ? <CountUp to={s.cities} /> : '—'}</b><span>cities hosting member watch parties</span></div>
