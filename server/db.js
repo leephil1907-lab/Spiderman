@@ -154,22 +154,6 @@ if (cols('payments').includes('amount_ngn')) {
   db.exec("ALTER TABLE payments ADD COLUMN amount REAL NOT NULL DEFAULT 0; ALTER TABLE payments ADD COLUMN currency TEXT NOT NULL DEFAULT 'NGN'; UPDATE payments SET amount = amount_ngn")
 }
 
-// Sample worldwide watch parties so the members area isn't empty. Venues are
-// placeholders ("TBC") until you confirm real bookings. Times are local to each city.
-if (db.prepare('SELECT COUNT(*) n FROM events').get().n === 0) {
-  const ins = db.prepare('INSERT INTO events (title, city, venue, starts_at, tz, capacity, min_tier) VALUES (?,?,?,?,?,?,?)')
-  const E = [
-    ['Members Rewatch Night', 'New York', 'Venue TBC — Manhattan', '2026-10-16T19:00:00-04:00', 'America/New_York', 150, 'webslinger'],
-    ['Members Rewatch Night', 'London', 'Venue TBC — Leicester Square', '2026-10-17T19:00:00+01:00', 'Europe/London', 150, 'webslinger'],
-    ['Members Rewatch Night', 'Lagos', 'Venue TBC — Lekki', '2026-10-17T19:00:00+01:00', 'Africa/Lagos', 120, 'webslinger'],
-    ['Members Rewatch Night', 'São Paulo', 'Venue TBC — Paulista', '2026-10-24T19:30:00-03:00', 'America/Sao_Paulo', 120, 'webslinger'],
-    ['Members Rewatch Night', 'Tokyo', 'Venue TBC — Shibuya', '2026-10-24T19:00:00+09:00', 'Asia/Tokyo', 100, 'webslinger'],
-    ['Members Rewatch Night', 'Sydney', 'Venue TBC — George St', '2026-10-31T19:00:00+11:00', 'Australia/Sydney', 100, 'webslinger'],
-    ['Members Rewatch Night', 'Mexico City', 'Venue TBC — Polanco', '2026-11-07T19:00:00-06:00', 'America/Mexico_City', 120, 'webslinger'],
-    ['Members Rewatch Night', 'Mumbai', 'Venue TBC — Lower Parel', '2026-11-07T19:00:00+05:30', 'Asia/Kolkata', 120, 'webslinger'],
-    ['Spider-Sense Private Screening + Q&A', 'Los Angeles', 'Venue TBC — Hollywood', '2026-11-14T18:00:00-08:00', 'America/Los_Angeles', 60, 'spidersense'],
-    ['Spider-Sense Private Screening + Q&A', 'Paris', 'Venue TBC — Grands Boulevards', '2026-11-21T19:00:00+01:00', 'Europe/Paris', 60, 'spidersense'],
-    ['Multiverse Lounge — Live Q&A (online)', 'Online', 'Members livestream', '2026-11-28T18:00:00+00:00', 'UTC', 500, 'multiverse'],
-  ]
-  for (const e of E) ins.run(...e)
-}
+// Never ship placeholder events. Remove TBC rows created by older builds while preserving
+// real events created through the admin panel.
+db.prepare("DELETE FROM events WHERE venue LIKE 'Venue TBC%'").run()
