@@ -20,6 +20,7 @@ jobs:
           curl -fsS localhost:3001/robots.txt | grep -q 'Sitemap: http://localhost:3001/sitemap.xml'
           curl -fsS localhost:3001/sitemap.xml | grep -q '<urlset'
           test "$(curl -s -o /dev/null -w '%{http_code}' -X POST -H 'x-bnd: 1' -H 'content-type: application/json' localhost:3001/api/admin/route -d '{"path":"/hq-ci"}')" = "404"
+          kill $PID 2>/dev/null || true
       - name: End-to-end tests
         run: |
           DATA_DIR=/tmp/e2e ADMIN_EMAILS=ci-admin@example.com ADMIN_PATH=/hq-ci ADMIN_INITIAL_PASSWORD=ci-pass-123 ADMIN_TEST_PASSWORD=ci-pass-123 PORT=3001 DEMO_MODE=0 npm start > /tmp/bnd-e2e.log 2>&1 &
