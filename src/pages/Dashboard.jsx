@@ -13,6 +13,7 @@ import { countryName, useLocale } from '../lib/locale'
 import { TIERS, tierById, priceOf, hasTier } from '../../shared/tiers.js'
 import { formatMoney } from '../../shared/currency.js'
 import { openChat } from '../components/SupportChat'
+import MemberCard from '../components/MemberCard'
 
 const AREAS = [
   { id: 'card', label: 'Member card', tier: 'free', icon: IdCard },
@@ -89,11 +90,7 @@ export default function Dashboard() {
             {/* member card + plan */}
             <Reveal className="dash-card span-2">
               <div className="dash-plan">
-                <div className="member-card" aria-label="Your digital member card">
-                  <div className="mc-top"><span>BND Fan Club</span><span>{t.name}</span></div>
-                  <div className="mc-name">{user.name}</div>
-                  <div className="mc-meta"><span>{user.memberNo}</span><span>Since {toDate(user.createdAt).toLocaleDateString(locale, { month: 'short', year: 'numeric' })}</span></div>
-                </div>
+                <MemberCard user={user} locale={locale} />
                 <div className="stack" style={{ gap: 12 }}>
                   <div className="row" style={{ gap: 10 }}>
                     <span className="tier-level">{t.level}</span>
