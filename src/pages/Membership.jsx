@@ -107,7 +107,7 @@ const FAQ = [
   ['Can I switch tiers or cancel?', 'Yes, any time from your Account page. Upgrades apply immediately; if you drop back to free, your paid perks stay active until the end of the period you paid for.'],
   ['What’s the difference between monthly and yearly?', 'Same perks. Yearly is billed once a year and works out to about two months free compared with paying monthly.'],
   ['Do I need a paid tier to join?', 'No. Friendly Neighborhood is free forever and includes your member card, personal dashboard, the Theory Board and trivia.'],
-  ['Is this an official Marvel or Sony site?', 'No. BND Fan Club is a fan community. See our Terms for details on trademarks and licensed artwork.'],
+  ['Is this an official Marvel or Sony site?', 'No. The Fan Club is a fan community. See our Terms for details on trademarks and licensed artwork.'],
 ]
 
 export default function Membership() {
