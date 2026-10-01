@@ -10,7 +10,7 @@
     "start:debug": "DEBUG=1 node --inspect=0.0.0.0:9229 server/index.js",
     "preview": "vite preview --host 0.0.0.0 --port 4173",
     "test:e2e": "node tests/e2e.mjs",
-    "check": "node --check server/index.js && vite build"
+    "check": "for f in server/*.js shared/*.js; do node --check \"$f\"; done && vite build"
   },
   "dependencies": {
     "@react-three/fiber": "^8.17.10",
