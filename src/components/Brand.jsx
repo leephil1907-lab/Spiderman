@@ -1,6 +1,6 @@
 import { SPIDER_G, SPIDER_VIEWBOX } from './spiderPath'
 
-/** The club's spider emblem (traced vector from the supplied artwork). Inherits currentColor. */
+/** The club's spider emblem. Inherits currentColor. */
 export function SpiderMark({ size = 20, title, className, style }) {
   return (
     <svg viewBox={SPIDER_VIEWBOX} height={size} width={(size * 1566) / 2094} fill="currentColor" className={className} style={style}
@@ -8,11 +8,11 @@ export function SpiderMark({ size = 20, title, className, style }) {
       dangerouslySetInnerHTML={{ __html: SPIDER_G }} />
   )
 }
-/** Brand lockup chip: scarlet disc + ink spider. */
-export function SpiderBadge({ size = 28 }) {
+/** High-visibility BND brand badge used in navigation and compact brand placements. */
+export function SpiderBadge({ size = 40 }) {
   return (
     <span className="brand-mark" style={{ width: size, height: size }} aria-hidden="true">
-      <SpiderMark size={Math.round(size * 0.66)} style={{ color: 'var(--raw-ink-950)' }} />
+      <SpiderMark size={Math.round(size * 0.72)} style={{ color: 'var(--raw-ink-950)' }} />
     </span>
   )
 }
