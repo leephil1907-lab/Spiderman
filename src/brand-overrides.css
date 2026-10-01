@@ -11,7 +11,6 @@
 }
 
 /* The hero must remain visibly Spider-Man-led even if an external film asset is unavailable. */
-.poster img[src$="spider-man-male.svg"] { object-fit: contain; height: 82%; width: auto; margin: auto; }
 
 /* Installable app identity: make the install surface unmistakably branded. */
 .install-brand { display: inline-flex; align-items: center; gap: 10px; }
