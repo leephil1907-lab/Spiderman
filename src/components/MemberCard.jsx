@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BadgeCheck, CalendarDays, CreditCard, Rotate3d, ShieldCheck } from 'lucide-react'
+import { BadgeCheck, CalendarDays, CreditCard, RefreshCcw, ShieldCheck } from 'lucide-react'
 import { tierById } from '../../shared/tiers.js'
 
 const toDate = (value) => {
@@ -60,7 +60,7 @@ export default function MemberCard({ user, locale }) {
             </div>
             <div className="mc-bottom">
               <span>{user.memberNo}</span>
-              <span className="mc-flip-hint"><Rotate3d size={14} /> Tap to flip</span>
+              <span className="mc-flip-hint"><RefreshCcw size={14} /> Tap to flip</span>
             </div>
           </section>
 
@@ -90,7 +90,7 @@ export default function MemberCard({ user, locale }) {
           </section>
         </div>
       </div>
-      <p className="member-card-caption"><Rotate3d size={15} aria-hidden="true" /> Touch or click the card to view the membership details.</p>
+      <p className="member-card-caption"><RefreshCcw size={15} aria-hidden="true" /> Touch or click the card to view the membership details.</p>
     </div>
   )
 }
