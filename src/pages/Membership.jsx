@@ -45,7 +45,7 @@ function Checkout({ tier, interval, onClose, onDone }) {
         {price > 0 && (
           <div className="alert alert-demo with-ic" style={{ marginBottom: 16, alignItems: 'flex-start' }}>
             <CreditCard size={18} strokeWidth={1.75} aria-hidden="true" style={{ flex: 'none', marginTop: 1 }} />
-            <span><b>Test checkout:</b> no card is charged. Live payments are taken in US dollars through {provider} once keys are added (see <code>server/payments.js</code>).</span>
+            <span><b>Payment setup pending:</b> no card is charged until {provider} credentials are configured. Membership pricing and access are already set in the club.</span>
           </div>
         )}
         {err && <div className="alert alert-error" role="alert" style={{ marginBottom: 16 }}>{err}</div>}
