@@ -15,7 +15,7 @@ export default function Footer() {
       <div className="wrap">
         <div className="footer-top">
           <div className="footer-brand">
-            <Link to="/" className="brand" aria-label="BND Fan Club — home"><SpiderBadge size={30} /> BND <small>FAN CLUB</small></Link>
+            <Link to="/" className="brand" aria-label="Spider-Man: Brand New Day — home"><SpiderBadge size={30} /> SPIDER-MAN <small>BRAND NEW DAY</small></Link>
             <p className="muted" style={{ maxWidth: '38ch', marginTop: 12 }}>The worldwide club for fans of <i>Spider-Man: Brand New Day</i>. Members in every time zone.</p>
             <ul className="footer-contact">
               <li><Mail size={15} strokeWidth={1.75} aria-hidden="true" /><a href={`mailto:${COMPANY.supportEmail}`}>{COMPANY.supportEmail}</a></li>
