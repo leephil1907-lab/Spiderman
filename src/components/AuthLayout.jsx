@@ -1,0 +1,16 @@
+import { MarvelLogo, SpiderMark } from './Brand'
+export default function AuthLayout({ children, line1 = 'Hold on.', line2 = 'Let go.' }) {
+  return (
+    <main className="auth" id="main">
+      <div className="auth-art" aria-hidden="true">
+        <SpiderMark size={620} className="auth-emblem" />
+        <div className="auth-logo"><MarvelLogo height={26} /></div>
+        <img src="/plate.png" alt="" />
+        <div className="quote">{line1}<br /><span>{line2}</span></div>
+      </div>
+      <div className="auth-main">
+        <div className="auth-card">{children}</div>
+      </div>
+    </main>
+  )
+}

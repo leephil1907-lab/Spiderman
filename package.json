@@ -1,0 +1,37 @@
+{
+  "name": "brand-new-day",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node server/index.js & vite --host 0.0.0.0",
+    "build": "vite build",
+    "start": "node server/index.js",
+    "start:debug": "DEBUG=1 node --inspect=0.0.0.0:9229 server/index.js",
+    "preview": "vite preview --host 0.0.0.0 --port 4173",
+    "test:e2e": "node tests/e2e.mjs",
+    "check": "node --check server/index.js && vite build"
+  },
+  "dependencies": {
+    "@react-three/fiber": "^8.17.10",
+    "better-sqlite3": "^12.11.1",
+    "cookie-parser": "^1.4.7",
+    "express": "^4.22.3",
+    "lucide-react": "^1.49.0",
+    "nodemailer": "^6.10.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.6",
+    "simple-icons": "^16.33.0",
+    "three": "^0.169.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.3",
+    "playwright": "1.47",
+    "vite": "^5.4.10"
+  },
+  "description": "Spider-Man: Brand New Day fan club — scroll film (React Three Fiber) + members site (Express, SQLite).",
+  "engines": {
+    "node": ">=20"
+  }
+}

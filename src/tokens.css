@@ -1,0 +1,38 @@
+/* ── Tier 1 · raw primitives ─────────────────────────────────────────────
+   Every ink step holds hue ≈354° and only drops chroma, so the darkest field
+   is the same colour as the accent, not a grey the accent sits on.        */
+:root {
+  --raw-ink-950: #150406;
+  --raw-ink-900: #1e070a;
+  --raw-ink-800: #2c0e13;
+  --raw-ink-700: #431a20;
+  --raw-bone-50: #f2f3f5;
+  --raw-bone-400: #9a8a8d;
+  --raw-bone-500: #75666a;
+  --raw-scarlet-500: #e0202b;
+  --raw-scarlet-300: #ff5d64;
+  --raw-cobalt-500: #2b4fd0;
+}
+
+/* ── Tier 2 · semantic roles ─────────────────────────────────────────────
+   Two accents, and they never share a frame: scarlet = figure, cobalt = room. */
+:root {
+  --color-field: var(--raw-ink-950);
+  --color-field-raised: var(--raw-ink-900);
+  --color-field-deep: var(--raw-ink-800);
+  --color-rule: var(--raw-ink-700);
+  --color-text: var(--raw-bone-50);
+  --color-text-muted: var(--raw-bone-400);
+  --color-text-faint: var(--raw-bone-500);
+  --color-strand: var(--raw-bone-50);
+  --color-accent-figure: var(--raw-scarlet-500);
+  --color-accent-figure-hi: var(--raw-scarlet-300);
+  --color-accent-room: var(--raw-cobalt-500);
+}
+
+/* ── Tier 3 · bind ─────────────────────────────────────────────────────── */
+html, body {
+  background: var(--color-field);
+  color: var(--color-text);
+}
+::selection { background: var(--color-accent-figure); color: var(--color-text); }
