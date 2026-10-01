@@ -1,5 +1,5 @@
 // Everything on the film sections lives here. Edit freely.
-// Facts checked Oct 2026 against Rotten Tomatoes, Movie Insider and Box Office Hype.
+// Facts checked Oct 2026 against official Sony Pictures / Marvel materials.
 export const FILM = {
   title: 'Spider-Man: Brand New Day',
   status: 'In cinemas worldwide',
@@ -14,17 +14,16 @@ export const FILM = {
   distributor: 'Sony Pictures',
   boxOffice: '$2.3B+ worldwide',
   boxOfficeNote: 'reported, early Sept 2026',
-  // written for this site — swap in your licensed official synopsis if you prefer
   synopsis: [
     'Four years after the world forgot Peter Parker, he is Spider-Man full time, guarding a New York that no longer knows his name and watching the people he loves move on without him.',
     'The pressure starts changing him in ways he may not be able to control, just as a new threat moves through the city: a villain no one can see.',
   ],
-  // ⬇ Licensed media slots. Leave empty to show the built-in artwork.
-  trailerYouTubeId: '',           // e.g. 'abc123XYZ' from youtube.com/watch?v=abc123XYZ
-  posterSrc: '',                  // e.g. '/media/poster.jpg' (put the file in public/media)
+  // Official Sony Pictures Entertainment final trailer.
+  trailerYouTubeId: 'P3uI5sLosKU',
+  // Add a licensed official key-art file under public/media and set its path here.
+  posterSrc: '',
 }
 
-// `reveal: true` blurs the role until clicked — some roles are plot reveals.
 export const CAST = [
   { name: 'Tom Holland', role: 'Peter Parker / Spider-Man' },
   { name: 'Zendaya', role: 'MJ' },
@@ -47,8 +46,6 @@ export const TIMELINE = [
   { year: 2026, title: 'Spider-Man: Brand New Day', note: 'Four years on. Nobody remembers. He does.' },
 ]
 
-// Where to watch, by region. Links go to each chain's homepage — showtimes change
-// weekly, so we send fans to the source rather than mirroring listings.
 export const CINEMA_REGIONS = [
   { id: 'na', name: 'North America', countries: ['US', 'CA'], chains: [
     { name: 'AMC Theatres', url: 'https://www.amctheatres.com' }, { name: 'Regal', url: 'https://www.regmovies.com' },
@@ -68,7 +65,6 @@ export const CINEMA_REGIONS = [
 export const IMAX = { name: 'Find an IMAX screen', url: 'https://www.imax.com/theatres' }
 export const regionForCountry = (cc) => CINEMA_REGIONS.find((r) => r.countries.includes(cc))?.id || 'na'
 
-// Social channels shown in the footer. Leave url empty to hide one. Verify handles before launch.
 export const SOCIAL = [
   { name: 'instagram', label: 'Spider-Man on Instagram', url: 'https://www.instagram.com/spidermanmovie/' },
   { name: 'x', label: 'Spider-Man on X', url: 'https://x.com/SpiderManMovie' },
@@ -90,7 +86,6 @@ export const QUIZ = [
   { q: 'Who co-wrote it with Erik Sommers?', a: ['Chris McKenna', 'Christopher Markus', 'Jeff Loveness', 'Kevin Feige'], c: 0 },
 ]
 
-// Business + contact details shown in the footer and legal pages. Fill in before launch.
 export const COMPANY = {
   name: 'BND Fan Club',
   legalName: '[Registered company name]',
