@@ -26,9 +26,9 @@ export default function Nav() {
   return (
     <header className={`nav ${solid ? 'solid' : ''}`}>
       <a href="#main" className="skip">Skip to content</a>
-      <Link to="/" className="brand" aria-label="Spider-Man: Brand New Day — home">
+      <Link to="/" className="brand" aria-label="Brand New Day — home">
         <SpiderBadge size={42} />
-        <span className="brand-copy"><b>SPIDER-MAN</b><small>BRAND NEW DAY</small></span>
+        <span className="brand-copy"><b>BRAND NEW DAY</b><small>SPIDER-MAN</small></span>
       </Link>
       <button className="nav-burger" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="main-nav" onClick={() => setOpen((o) => !o)}>
         {open ? <X size={20} strokeWidth={1.75} /> : <Menu size={20} strokeWidth={1.75} />}
@@ -37,8 +37,8 @@ export default function Nav() {
         <Link to="/#film">The Film</Link>
         <Link to="/#cast">Cast</Link>
         <Link to="/#watch">Where to Watch</Link>
-        <NavLink to="/membership">Membership</NavLink>
-        <NavLink to="/club">Club</NavLink>
+        <NavLink to="/membership">Fan Club</NavLink>
+        <NavLink to="/club">Members Area</NavLink>
         {user ? (
           <>
             <NavLink to="/dashboard" className="with-ic"><LayoutDashboard size={16} strokeWidth={1.75} aria-hidden="true" />Dashboard</NavLink>
