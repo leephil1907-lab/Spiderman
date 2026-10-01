@@ -1,7 +1,4 @@
 {
-  "note": "Web-Slinger+ only. Put image files in public/media/wallpapers/ and list them here.",
-  "items": [
-    { "title": "Red Black — Desktop", "size": "2560×1440", "src": "/plate.png", "placeholder": true },
-    { "title": "Red Black — Phone", "size": "1170×2532", "src": "/plate.png", "placeholder": true }
-  ]
+  "note": "Web-Slinger wallpapers are published when real artwork is available.",
+  "items": []
 }
