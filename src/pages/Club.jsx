@@ -224,7 +224,7 @@ export default function Club() {
                     <div className="walls">{items.map((w) => (
                       <div key={w.title} className="wall">
                         <div className="thumb"><img src={w.src} alt="" /></div>
-                        <div className="wb"><div><b style={{ fontSize: 14 }}>{w.title}</b><div className="faint" style={{ fontSize: 12 }}>{w.size}{w.placeholder ? ' · placeholder' : ''}</div></div>
+                        <div className="wb"><div><b style={{ fontSize: 14 }}>{w.title}</b><div className="faint" style={{ fontSize: 12 }}>{w.size}</div></div>
                           <a className="btn btn-sm" href={w.src} download><Download size={14} strokeWidth={1.75} aria-hidden="true" />Download</a></div>
                       </div>
                     ))}</div>
@@ -237,7 +237,6 @@ export default function Club() {
                         <span className="eyebrow">{v.kicker}</span>
                         <h3 className="h-2" style={{ fontSize: 24 }}>{v.title}</h3>
                         {v.body.split(/\n\n+/).map((p, k) => <p key={k} className="muted" style={{ marginTop: 12 }}>{p}</p>)}
-                        {v.placeholder && <p className="faint" style={{ fontSize: 12, marginTop: 14 }}>Placeholder: edit server/content/spoiler-vault.json</p>}
                       </article>
                     ))}</div>
                   )} />
@@ -249,7 +248,6 @@ export default function Club() {
                         <span className="eyebrow">{v.kicker}</span>
                         <h3 className="h-2" style={{ fontSize: 24 }}>{v.title}</h3>
                         {v.body.split(/\n\n+/).map((p, k) => <p key={k} className="muted" style={{ marginTop: 12 }}>{p}</p>)}
-                        {v.placeholder && <p className="faint" style={{ fontSize: 12, marginTop: 14 }}>Placeholder: edit server/content/multiverse-lounge.json</p>}
                       </article>
                     ))}</div>
                   )} />
