@@ -40,4 +40,4 @@ Copy `.env.example` to `.env`. Key settings include:
 - `VITE_SITE_URL`
 - `DATA_DIR` for SQLite storage
 
-For production, use HTTPS, persistent storage, working email/payment credentials, and `DEMO_MODE=0`.
+For production, use HTTPS, persistent storage, working email/payment credentials.
