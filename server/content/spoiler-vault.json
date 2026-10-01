@@ -1,8 +1,4 @@
 {
-  "note": "Spider-Sense only. Replace these placeholders with your own breakdowns. Body supports plain paragraphs separated by blank lines.",
-  "items": [
-    { "title": "Breakdown #1 — your headline here", "kicker": "Full spoilers", "body": "Write your first deep-dive here.\n\nKeep each paragraph short; the vault renders them as separate blocks.", "placeholder": true },
-    { "title": "Easter-egg log", "kicker": "Full spoilers", "body": "List the callbacks your members should rewatch for.", "placeholder": true },
-    { "title": "Post-credits explained", "kicker": "Full spoilers", "body": "What the stingers set up, and what it means for the next film.", "placeholder": true }
-  ]
+  "note": "Spoiler Vault content is published by the club team through the production content workflow.",
+  "items": []
 }
