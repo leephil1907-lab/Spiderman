@@ -1,8 +1,4 @@
 {
-  "note": "Multiverse only. Replace these placeholders with your own live-session schedule, replay links and collectible drops.",
-  "items": [
-    { "title": "Live Q&A — November session", "kicker": "Livestream · Nov 28, 18:00 UTC", "body": "Monthly members-only live session with the club team. Add your stream link here once it's scheduled.\n\nSubmit questions in advance through the live chat.", "placeholder": true },
-    { "title": "Replay library", "kicker": "On demand", "body": "Recordings of past Lounge sessions appear here.", "placeholder": true },
-    { "title": "Collectible drop #1", "kicker": "Digital collectible", "body": "Exclusive digital art pack for Multiverse members. Put the download link here.", "placeholder": true }
-  ]
+  "note": "Multiverse Lounge content is published by the club team through the production content workflow.",
+  "items": []
 }
