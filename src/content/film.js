@@ -12,8 +12,8 @@ export const FILM = {
   rating: 'PG-13',
   studios: 'Marvel Studios · Columbia Pictures',
   distributor: 'Sony Pictures',
-  boxOffice: '$2.3B+ worldwide',
-  boxOfficeNote: 'reported, early Sept 2026',
+  boxOffice: '$2.4B+ worldwide',
+  boxOfficeNote: 'reported in early September 2026',
   synopsis: [
     'Four years after the world forgot Peter Parker, he is Spider-Man full time, guarding a New York that no longer knows his name and watching the people he loves move on without him.',
     'The pressure starts changing him in ways he may not be able to control, just as a new threat moves through the city: a villain no one can see.',
