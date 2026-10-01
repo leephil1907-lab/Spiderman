@@ -7,7 +7,7 @@ import { QUIZ } from '../content/film'
 import { Field } from '../components/Field'
 import Footer from '../components/Footer'
 import { Lock, Heart, Trash2, Download, MapPin, CalendarDays, Users, Check, Trophy, IdCard, MessagesSquare, Brain, PartyPopper, Image as ImageIcon, BookLock, Orbit } from 'lucide-react'
-import { countryName } from '../lib/locale'
+import MemberCard from '../components/MemberCard'
 
 const TABS = [
   { id: 'card', label: 'Member card', tier: 'free', icon: IdCard },
@@ -28,24 +28,6 @@ function Locked({ needs }) {
       <h3 className="h-2" style={{ fontSize: 24 }}>{t.name} members only</h3>
       <p className="muted" style={{ margin: '10px auto 22px', maxWidth: '44ch' }}>{t.tagline} Unlock {t.perks.slice(1).join(', ').toLowerCase()}.</p>
       <Link className="btn btn-primary" to={`/membership?plan=${t.id}`}>Upgrade to {t.name}</Link>
-    </div>
-  )
-}
-
-function MemberCard({ user }) {
-  const t = tierById(user.tier)
-  return (
-    <div className="grid-2" style={{ alignItems: 'start' }}>
-      <div className="member-card" aria-label="Your digital member card">
-        <div className="mc-top"><span>BND Fan Club</span><span>{t.name}</span></div>
-        <div className="mc-name">{user.name}</div>
-        <div className="mc-meta"><span>{user.memberNo}</span><span>{user.country ? countryName(user.country) + ' · ' : ''}Since {fmtDate(user.createdAt)}</span></div>
-      </div>
-      <div className="stack">
-        <h3 className="h-2" style={{ fontSize: 26 }}>Your perks</h3>
-        <ul className="perks">{t.perks.map((p) => <li key={p}><Check size={16} strokeWidth={2.25} aria-hidden="true" />{p}</li>)}</ul>
-        {t.id !== 'multiverse' && <div><Link className="btn btn-primary" to="/membership">See upgrades</Link></div>}
-      </div>
     </div>
   )
 }
@@ -200,7 +182,8 @@ function Gallery({ endpoint, render }) {
   const [data, setData] = useState(null)
   useEffect(() => { api(endpoint).then(setData).catch(() => setData({ items: [] })) }, [endpoint])
   if (!data) return <p className="muted">Loading…</p>
-  return render(data.items || [])
+  if (!data.items?.length) return <div className="panel"><p className="muted">No content has been published here yet. Check back when the club team adds it.</p></div>
+  return render(data.items)
 }
 
 export default function Club() {
@@ -232,7 +215,7 @@ export default function Club() {
           <div role="tabpanel" aria-label={tab.label}>
             {!allowed ? <Locked needs={tab.tier} /> : (
               <>
-                {tab.id === 'card' && <MemberCard user={user} />}
+                {tab.id === 'card' && <MemberCard user={user} locale={undefined} />}
                 {tab.id === 'theories' && <Theories user={user} />}
                 {tab.id === 'trivia' && <Trivia />}
                 {tab.id === 'events' && <Events />}
