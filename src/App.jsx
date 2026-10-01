@@ -27,30 +27,30 @@ function ScrollReset() {
   useEffect(() => { if (!hash) window.scrollTo(0, 0) }, [pathname, hash])
   return null
 }
-const DEFAULT_DESC = 'The worldwide fan club for Spider-Man: Brand New Day. Cast, trailer, where to watch, global watch parties, trivia and the Theory Board. Join free.'
+const DEFAULT_DESC = 'Spider-Man: Brand New Day — trailer, cast, film media, where to watch and a dedicated fan club for fans.'
 const META = {
-  '/': ['Spider-Man: Brand New Day — Fan Club', DEFAULT_DESC],
-  '/login': ['Log in', 'Log in to the BND Fan Club.'],
-  '/signup': ['Join free', 'Join the worldwide Spider-Man: Brand New Day fan club. Free forever, with optional paid tiers from $4.99/month.'],
-  '/forgot-password': ['Forgot password', 'Reset your BND Fan Club password.'],
-  '/reset-password': ['Reset password', 'Choose a new BND Fan Club password.'],
-  '/membership': ['Membership tiers', 'Four membership tiers in USD: Friendly Neighborhood (free), Web-Slinger $4.99, Spider-Sense $9.99 and Multiverse $19.99 a month. Compare perks.'],
-  '/dashboard': ['My dashboard', 'Your personal BND Fan Club dashboard.'],
-  '/help': ['Help centre', 'Answers about BND Fan Club memberships, billing, your account and watch parties, plus live chat support.'],
-  '/refunds': ['Refund Policy', 'How refunds work for BND Fan Club memberships.'],
+  '/': ['Spider-Man: Brand New Day', DEFAULT_DESC],
+  '/login': ['Log in', 'Log in to the Brand New Day fan club.'],
+  '/signup': ['Join free', 'Join the Spider-Man: Brand New Day fan club. Free forever, with optional paid tiers from $4.99/month.'],
+  '/forgot-password': ['Forgot password', 'Reset your Brand New Day fan club password.'],
+  '/reset-password': ['Reset password', 'Choose a new Brand New Day fan club password.'],
+  '/membership': ['Membership tiers', 'Fan club membership tiers in USD: Friendly Neighborhood (free), Web-Slinger $4.99, Spider-Sense $9.99 and Multiverse $19.99 a month. Compare perks.'],
+  '/dashboard': ['My dashboard', 'Your personal Brand New Day fan club dashboard.'],
+  '/help': ['Help centre', 'Answers about fan club memberships, billing, your account and watch parties, plus live chat support.'],
+  '/refunds': ['Refund Policy', 'How refunds work for fan club memberships.'],
   '/accessibility': ['Accessibility', 'Our accessibility commitment and how to give feedback.'],
   '/tickets': ['My tickets', 'Your support tickets.'],
   '/club': ['Club', 'Members area: member card, Theory Board, trivia, watch parties and more.'],
   '/account': ['Account', 'Manage your BND Fan Club account.'],
-  '/privacy': ['Privacy Policy', 'How BND Fan Club collects, uses and protects your data.'],
-  '/terms': ['Terms of Use', 'The rules for using BND Fan Club.'],
+  '/privacy': ['Privacy Policy', 'How the Brand New Day website and fan club collect, use and protect your data.'],
+  '/terms': ['Terms of Use', 'The rules for using the Spider-Man: Brand New Day website and fan club.'],
 }
 function setMeta(sel, attr, val) { const el = document.head.querySelector(sel); if (el) el.setAttribute(attr, val) }
 function Meta() {
   const { pathname } = useLocation()
   useEffect(() => {
     const [t, d] = META[pathname] || ['Not found', DEFAULT_DESC]
-    const title = pathname === '/' ? t : `${t} · BND Fan Club`
+    const title = pathname === '/' ? t : `${t} · Spider-Man: Brand New Day`
     document.title = title
     setMeta('meta[name="description"]', 'content', d)
     setMeta('meta[property="og:title"]', 'content', title)
