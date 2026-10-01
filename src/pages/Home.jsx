@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { Play, Ticket, ArrowUpRight, EyeOff, MapPin, CalendarDays, Clapperboard, Clock, Users, Globe2 } from 'lucide-react'
+import { Play, Ticket, ArrowUpRight, EyeOff, MapPin, CalendarDays, Clapperboard, Clock, Users, Globe2, Images, ExternalLink } from 'lucide-react'
 import ScrollFilm from '../components/ScrollFilm'
 import TierCards, { BillingToggle } from '../components/TierCards'
 import Footer from '../components/Footer'
@@ -44,6 +44,41 @@ function Stats() {
         <div className="stat"><Clock size={18} strokeWidth={1.75} aria-hidden="true" /><b><CountUp to={145} /></b><span>minutes of Spider-Man</span></div>
         <div className="stat"><CalendarDays size={18} strokeWidth={1.75} aria-hidden="true" /><b><CountUp to={10} /></b><span>years of Tom Holland’s Peter Parker</span></div>
         <div className="stat"><Globe2 size={18} strokeWidth={1.75} aria-hidden="true" /><b>{s ? <CountUp to={s.cities} /> : '—'}</b><span>cities hosting member watch parties</span></div>
+      </div>
+    </section>
+  )
+}
+
+function FilmMedia() {
+  return (
+    <section className="section film-media" id="gallery">
+      <div className="wrap">
+        <Reveal>
+          <span className="eyebrow">Film media</span>
+          <h2 className="h-2">See the new Spider-Man world.</h2>
+          <p className="lede" style={{ marginTop: 12 }}>Official film media, trailer footage and promotional artwork from the current Spider-Man: Brand New Day campaign.</p>
+        </Reveal>
+        <div className="media-grid">
+          <Reveal className="media-feature">
+            <a href={FILM.trailerUrl} target="_blank" rel="noopener noreferrer" className="media-tile media-trailer" aria-label="Open the official Spider-Man: Brand New Day final trailer on YouTube">
+              <img src={FILM.trailerThumbnail} alt="Spider-Man: Brand New Day final trailer thumbnail" loading="lazy" />
+              <span className="media-overlay" aria-hidden="true"><span className="play"><Play size={24} fill="currentColor" /></span><b>Final Trailer</b><small>Peter’s Journey · Sony Pictures Entertainment</small></span>
+            </a>
+          </Reveal>
+          <Reveal delay={80}>
+            <a href={FILM.officialGalleryUrl} target="_blank" rel="noopener noreferrer" className="media-tile media-poster" aria-label="Open the official Spider-Man Brand New Day gallery">
+              <img src={FILM.posterSrc} alt="Spider-Man: Brand New Day promotional artwork" loading="lazy" />
+              <span className="media-overlay"><Images size={18} /><span><b>Official Gallery</b><small>Posters, trailers and film imagery</small></span><ArrowUpRight size={16} /></span>
+            </a>
+          </Reveal>
+          <Reveal delay={140}>
+            <a href={FILM.officialFilmUrl} target="_blank" rel="noopener noreferrer" className="media-source">
+              <span className="media-source-icon"><ExternalLink size={20} /></span>
+              <span><b>Official Sony Pictures film page</b><small>Current film details, gallery, trailer and cinema information.</small></span>
+              <ArrowUpRight size={16} />
+            </a>
+          </Reveal>
+        </div>
       </div>
     </section>
   )
@@ -186,25 +221,21 @@ export default function Home() {
         <section className="section" id="trailer">
           <div className="wrap">
             <Reveal>
-              <span className="eyebrow">Trailer</span>
+              <span className="eyebrow">Final trailer</span>
               <h2 className="h-2" style={{ marginBottom: 28 }}>Watch it again. You know you will.</h2>
             </Reveal>
             <Reveal className="video">
               {FILM.trailerYouTubeId ? (
-                <iframe src={`https://www.youtube-nocookie.com/embed/${FILM.trailerYouTubeId}?rel=0`} title={`${FILM.title} trailer`} loading="lazy"
+                <iframe src={`https://www.youtube-nocookie.com/embed/${FILM.trailerYouTubeId}?rel=0`} title={`${FILM.title} final trailer`} loading="lazy"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
               ) : (
-                <div className="video-empty">
-                  <div>
-                    <div className="play" aria-hidden="true"><Play size={26} strokeWidth={1.5} fill="currentColor" /></div>
-                    <p className="muted">Trailer slot</p>
-                    <p className="faint" style={{ fontSize: 13, marginTop: 4 }}>Set <code>trailerYouTubeId</code> in <code>src/content/film.js</code></p>
-                  </div>
-                </div>
+                <div className="video-empty"><div><div className="play" aria-hidden="true"><Play size={26} strokeWidth={1.5} fill="currentColor" /></div><p className="muted">Trailer unavailable</p></div></div>
               )}
             </Reveal>
           </div>
         </section>
+
+        <FilmMedia />
 
         <section className="section" id="cast">
           <div className="wrap">
