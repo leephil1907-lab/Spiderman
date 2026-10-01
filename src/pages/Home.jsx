@@ -6,6 +6,8 @@ import TierCards, { BillingToggle } from '../components/TierCards'
 import Footer from '../components/Footer'
 import { SpiderMark, MarvelLogo } from '../components/Brand'
 import PosterWall from '../components/PosterWall'
+import { TrailerPlayer, AtHome, FullCredits } from '../components/FilmSections'
+import FanClubSection from '../components/FanClubSection'
 import { Reveal, Marquee, CountUp, Countdown, useSpotlight } from '../components/Motion'
 import { FILM, CAST, TIMELINE, CINEMA_REGIONS, IMAX, regionForCountry } from '../content/film'
 import { useAuth } from '../lib/auth'
@@ -41,7 +43,7 @@ function Stats() {
   return (
     <section className="stats" aria-label="By the numbers">
       <div className="wrap stats-grid">
-        <div className="stat"><Clapperboard size={18} strokeWidth={1.75} aria-hidden="true" /><b>$<CountUp to={2.4} decimals={1} />B+</b><span>worldwide box office<small>{FILM.boxOfficeNote}</small></span></div>
+        <div className="stat"><Clapperboard size={18} strokeWidth={1.75} aria-hidden="true" /><b>$<CountUp to={FILM.boxOfficeValue} decimals={1} />B+</b><span>worldwide box office<small>{FILM.boxOfficeNote}</small></span></div>
         <div className="stat"><Clock size={18} strokeWidth={1.75} aria-hidden="true" /><b><CountUp to={145} /></b><span>minutes of Spider-Man</span></div>
         <div className="stat"><CalendarDays size={18} strokeWidth={1.75} aria-hidden="true" /><b><CountUp to={10} /></b><span>years of Tom Holland’s Peter Parker</span></div>
         <div className="stat"><Globe2 size={18} strokeWidth={1.75} aria-hidden="true" /><b>{s ? <CountUp to={s.cities} /> : '—'}</b><span>cities hosting member watch parties</span></div>
@@ -160,6 +162,7 @@ export default function Home() {
   const loc = useLocation()
   const nav = useNavigate()
   const { user } = useAuth()
+  const { locale } = useLocale()
   const [interval, setBilling] = useState('month')
   useEffect(() => {
     if (!loc.hash) return
@@ -215,6 +218,8 @@ export default function Home() {
                 <div className="fact"><dt>Studios</dt><dd>{FILM.studios}</dd></div>
               </dl>
             </Reveal>
+            <p className="film-tagline">{FILM.tagline}</p>
+            <FullCredits />
           </div>
         </section>
 
@@ -223,17 +228,10 @@ export default function Home() {
         <section className="section" id="trailer">
           <div className="wrap">
             <Reveal>
-              <span className="eyebrow">Final trailer</span>
+              <span className="eyebrow">Official trailers</span>
               <h2 className="h-2" style={{ marginBottom: 28 }}>Watch it again. You know you will.</h2>
             </Reveal>
-            <Reveal className="video">
-              {FILM.trailerYouTubeId ? (
-                <iframe src={`https://www.youtube-nocookie.com/embed/${FILM.trailerYouTubeId}?rel=0`} title={`${FILM.title} final trailer`} loading="lazy"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
-              ) : (
-                <div className="video-empty"><div><div className="play" aria-hidden="true"><Play size={26} strokeWidth={1.5} fill="currentColor" /></div><p className="muted">Trailer unavailable</p></div></div>
-              )}
-            </Reveal>
+            <TrailerPlayer />
           </div>
         </section>
 
@@ -268,24 +266,24 @@ export default function Home() {
         </section>
 
         <WhereToWatch />
+        <AtHome />
         <NextParty />
 
-        <section className="section" id="membership">
-          <div className="wrap">
-            <Reveal>
-              <span className="eyebrow">Fan Club</span>
-              <h2 className="h-2">Pick your level of spider-sense.</h2>
-              <div className="row" style={{ marginTop: 12, alignItems: 'flex-end' }}>
-                <p className="lede">Four tiers, from free to the full Multiverse. One price worldwide, in US dollars.</p>
-                <span className="spacer" />
-                <BillingToggle value={interval} onChange={setBilling} />
+        <FanClubSection user={user} locale={locale}>
+          <Reveal>
+            <div className="row" style={{ alignItems: 'flex-end' }}>
+              <div>
+                <h3 className="fc-tiers-h">Pick your level of spider-sense.</h3>
+                <p className="muted" style={{ marginTop: 6 }}>Four tiers, from free to the full Multiverse. One price worldwide, in US dollars.</p>
               </div>
-            </Reveal>
-            <TierCards current={user?.tier} currentInterval={user?.billingInterval} interval={interval}
-              onChoose={(t, iv) => nav(user ? `/membership?plan=${t.id}&billing=${iv}` : `/signup?plan=${t.id}&billing=${iv}`)} />
-            <p style={{ marginTop: 20 }}><Link to="/membership" className="dash-link">Compare every tier in detail<ArrowUpRight size={14} strokeWidth={1.75} aria-hidden="true" /></Link></p>
-          </div>
-        </section>
+              <span className="spacer" />
+              <BillingToggle value={interval} onChange={setBilling} />
+            </div>
+          </Reveal>
+          <TierCards current={user?.tier} currentInterval={user?.billingInterval} interval={interval}
+            onChoose={(t, iv) => nav(user ? `/membership?plan=${t.id}&billing=${iv}` : `/signup?plan=${t.id}&billing=${iv}`)} />
+          <p style={{ marginTop: 20 }}><Link to="/membership" className="dash-link">Compare every tier in detail<ArrowUpRight size={14} strokeWidth={1.75} aria-hidden="true" /></Link></p>
+        </FanClubSection>
 
         <section className="section cta-band">
           <div className="wrap">

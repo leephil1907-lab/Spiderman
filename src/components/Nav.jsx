@@ -37,7 +37,7 @@ export default function Nav() {
         <Link to="/#film">The Film</Link>
         <Link to="/#cast">Cast</Link>
         <Link to="/#watch">Where to Watch</Link>
-        <NavLink to="/membership">Fan Club</NavLink>
+        <Link to="/#fanclub">Fan Club</Link>
         <NavLink to="/club">Members Area</NavLink>
         {user ? (
           <>

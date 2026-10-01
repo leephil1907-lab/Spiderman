@@ -2,7 +2,7 @@
 // Facts checked Oct 2026 against official Sony Pictures / Marvel materials.
 export const FILM = {
   title: 'Spider-Man: Brand New Day',
-  status: 'In cinemas worldwide',
+  status: 'Now playing · On Digital Oct 6',
   releaseUS: 'July 31, 2026',
   releaseISO: '2026-07-31',
   director: 'Destin Daniel Cretton',
@@ -12,12 +12,16 @@ export const FILM = {
   rating: 'PG-13',
   studios: 'Marvel Studios · Columbia Pictures',
   distributor: 'Sony Pictures',
-  boxOffice: '$2.4B+ worldwide',
-  boxOfficeNote: 'reported in early September 2026',
+  boxOffice: '$2.5B+ worldwide',
+  boxOfficeValue: 2.5,
+  boxOfficeNote: 'reported Sept 29, 2026',
+  // Official synopsis, spidermanbrandnewday.movie
   synopsis: [
-    'Four years after the world forgot Peter Parker, he is Spider-Man full time, guarding a New York that no longer knows his name and watching the people he loves move on without him.',
-    'The pressure starts changing him in ways he may not be able to control, just as a new threat moves through the city: a villain no one can see.',
+    'It’s a Brand New Day for Peter Parker. Fighting crime full-time as Spider-Man in a world that doesn’t remember him — and the pressure of seeing his old friends move on without him — sparks a change in Peter he may not have the power to control.',
+    'But that transformation might also be the only thing that can stop a shocking new threat to the city and those he loves: a powerful villain no one can even see.',
   ],
+  tagline: 'The world may have forgotten Peter Parker, but he hasn’t forgotten them.',
+  ratingReason: 'Rated PG-13 for sequences of action/violence and some language.',
   // Official Sony Pictures Entertainment final trailer supplied by the project owner.
   trailerYouTubeId: 'P3uI5sLosKU',
   trailerUrl: 'https://youtu.be/P3uI5sLosKU',
@@ -27,6 +31,58 @@ export const FILM = {
   officialFilmUrl: 'https://www.sonypictures.com/movies/spidermanbrandnewday',
   officialGalleryUrl: 'https://spidermanbrandnewday.movie/gallery/',
   trailerThumbnail: 'https://i.ytimg.com/vi/P3uI5sLosKU/maxresdefault.jpg',
+}
+
+// The three official trailers listed on spidermanbrandnewday.movie (newest first)
+export const TRAILERS = [
+  { id: 'P3uI5sLosKU', title: 'Final Trailer', sub: 'Peter’s Journey' },
+  { id: '3gAlCLVpePk', title: 'Official Trailer 2', sub: 'Sony Pictures Entertainment' },
+  { id: '8TZMtslA3UY', title: 'Official Trailer', sub: 'Sony Pictures Entertainment' },
+]
+
+// Official credits block, spidermanbrandnewday.movie
+export const CREDITS = [
+  ['Directed by', ['Destin Daniel Cretton']],
+  ['Written by', ['Chris McKenna & Erik Sommers']],
+  ['Based on the Marvel comic book by', ['Stan Lee and Steve Ditko']],
+  ['Produced by', ['Kevin Feige, p.g.a.', 'Amy Pascal, p.g.a.', 'Avi Arad', 'Rachel O’Connor, p.g.a.']],
+  ['Executive producers', ['Louis D’Esposito', 'David Cain']],
+  ['Music', ['Michael Giacchino']],
+  ['Cinematography', ['Brett Pawlak']],
+]
+
+// Sony Pictures Home Entertainment announcement, Sept 29, 2026
+export const HOME_RELEASE = {
+  digitalISO: '2026-10-06T07:00:00Z',
+  discISO: '2026-12-15T08:00:00Z',
+  digital: 'October 6, 2026',
+  disc: 'December 15, 2026',
+  buyUrl: 'https://www.sonypictures.com/movies/spidermanbrandnewday',
+  editions: [
+    { name: '4K UHD + Blu-ray Combo SteelBook', note: 'Collectible limited edition' },
+    { name: 'Limited Collector’s Edition SteelBook', note: 'Magnetic lenticular cover, a relic card with an authentic piece of production wardrobe, an all-new comic book, art cards, and reproductions of Peter’s letter to MJ and MJ’s drawing' },
+    { name: '4K Ultra HD · Blu-ray · DVD', note: 'Standard editions, December 15' },
+  ],
+  extras: [
+    { title: 'Goofs, Gaffes and Gags', kind: 'Outtakes', note: 'The on-set hi-jinx caught on camera.' },
+    { title: 'Tom Holland: Evolving Spider', kind: 'Featurette', note: 'Holland’s many roles in front of and behind the camera.' },
+    { title: 'Brand New Direction', kind: 'Featurette', note: 'Destin Daniel Cretton on a more mature Spider-Man.' },
+    { title: 'Secret Sources and Hidden Spider Eggs', kind: 'Featurette', note: 'Hidden references to the Marvel universe and beyond.' },
+    { title: 'Possession!', kind: 'Featurette', note: 'The practical performances behind the villain’s mental powers.' },
+    { title: 'Peter and The Punisher', kind: 'Featurette', note: 'Tom Holland and Jon Bernthal on their on-screen chemistry.' },
+    { title: 'Live-Action Comics', kind: 'Featurette', note: 'Recreating iconic comic covers on camera.' },
+    { title: 'Friends and Foes', kind: 'Featurette', note: 'Zendaya, Sadie Sink, Mark Ruffalo, Jacob Batalon and the ensemble.' },
+    { title: 'Webs, Wires and Runaway Tanks', kind: 'Featurette', note: 'Stunt coordinator Peng Zhang on the practical action.' },
+    { title: 'Scorpions, Ninjas, and the Spider-Suit', kind: 'Featurette', note: 'Designing the costumes and reinventing the suit.' },
+    { title: 'Lost Memories from Set: Camera Roll', kind: 'Featurette', note: 'Behind-the-scenes memories from set.' },
+  ],
+}
+
+// Earlier Tom Holland films — official Sony "Get it now" pages
+export const SAGA_LINKS = {
+  homecoming: 'https://www.sonypictures.com/movies/spidermanhomecoming',
+  'far-from-home': 'https://www.sonypictures.com/movies/spidermanfarfromhome',
+  'no-way-home': 'https://www.sonypictures.com/movies/spidermannowayhome',
 }
 
 export const CAST = [
@@ -71,6 +127,7 @@ export const IMAX = { name: 'Find an IMAX screen', url: 'https://www.imax.com/th
 export const regionForCountry = (cc) => CINEMA_REGIONS.find((r) => r.countries.includes(cc))?.id || 'na'
 
 export const SOCIAL = [
+  { name: 'facebook', label: 'Spider-Man on Facebook', url: 'https://www.facebook.com/SpiderManMovie' },
   { name: 'instagram', label: 'Spider-Man on Instagram', url: 'https://www.instagram.com/spidermanmovie/' },
   { name: 'x', label: 'Spider-Man on X', url: 'https://x.com/SpiderManMovie' },
   { name: 'tiktok', label: 'Spider-Man on TikTok', url: 'https://www.tiktok.com/@spidermanmovie' },

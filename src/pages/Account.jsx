@@ -1,3 +1,4 @@
+import MemberNav from '../components/MemberNav'
 import { useEffect, useMemo, useState } from 'react'
 import { Download, Trash2, LogOut, ShieldCheck } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
@@ -57,6 +58,7 @@ export default function Account() {
   return (
     <>
       <main className="club" id="main">
+        <MemberNav />
         <div className="wrap" style={{ maxWidth: 820 }}>
           <span className="eyebrow">Account</span>
           <h1 className="h-2" style={{ marginBottom: 8 }}>Your account</h1>

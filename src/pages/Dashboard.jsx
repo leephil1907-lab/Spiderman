@@ -1,8 +1,9 @@
+import MemberNav from '../components/MemberNav'
 import { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import {
   MessagesSquare, Heart, Brain, Ticket, CalendarDays, MapPin, Lock, Check, ChevronRight, Settings, CreditCard,
-  IdCard, Image as ImageIcon, BookLock, Orbit, PartyPopper, PenLine, UserPlus, Sparkles, LifeBuoy, Circle, CircleCheck,
+  IdCard, MonitorPlay, Play, Image as ImageIcon, BookLock, Orbit, PartyPopper, PenLine, UserPlus, Sparkles, LifeBuoy, Circle, CircleCheck,
 } from 'lucide-react'
 import { StatusPill } from './Tickets'
 import Footer from '../components/Footer'
@@ -14,6 +15,7 @@ import { TIERS, tierById, priceOf, hasTier } from '../../shared/tiers.js'
 import { formatMoney } from '../../shared/currency.js'
 import { openChat } from '../components/SupportChat'
 import MemberCard from '../components/MemberCard'
+import { HOME_RELEASE } from '../content/film'
 
 const AREAS = [
   { id: 'card', label: 'Member card', tier: 'free', icon: IdCard },
@@ -50,6 +52,7 @@ export default function Dashboard() {
   useEffect(() => { api('/dashboard').then(setD).catch((e) => setErr(e.message)) }, [user.tier])
 
   const t = tierById(user.tier)
+  const digitalOut = Date.now() >= new Date(HOME_RELEASE.digitalISO).getTime()
   const next = TIERS.find((x) => x.rank === t.rank + 1)
   const hour = new Date().getHours()
   const greet = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening'
@@ -66,8 +69,10 @@ export default function Dashboard() {
   return (
     <>
       <main className="club dash" id="main">
+        <MemberNav />
         <div className="wrap">
-          <Reveal className="dash-head">
+          <Reveal className="dash-head dash-hero">
+            <div className="dash-hero-art" aria-hidden="true"><img src="/media/bnd-ninjas.jpg" alt="" /><img className="dash-hero-fig" src="/plate.png" alt="" /></div>
             <div>
               <span className="eyebrow">Your dashboard</span>
               <h1 className="h-2">{greet}, {user.name.split(' ')[0]}.</h1>
@@ -141,6 +146,20 @@ export default function Dashboard() {
                 </div>
               ))}
             </div>
+
+            {/* film at home */}
+            <Reveal className="dash-card span-3 dash-film">
+              <span className="dash-film-ic"><MonitorPlay size={20} strokeWidth={1.75} aria-hidden="true" /></span>
+              <div className="dash-film-t">
+                <span className="faint" style={{ fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', fontWeight: 800 }}>Brand New Day at home</span>
+                <b>{digitalOut ? 'Out now on Digital' : `On Digital ${HOME_RELEASE.digital}`} · 4K, Blu-ray & DVD {HOME_RELEASE.disc}</b>
+              </div>
+              {!digitalOut && <Countdown to={HOME_RELEASE.digitalISO} />}
+              <div className="row">
+                <Link className="btn btn-sm" to="/#at-home">Extras & editions</Link>
+                <Link className="btn btn-sm" to="/#trailer"><Play size={14} aria-hidden="true" />Trailers</Link>
+              </div>
+            </Reveal>
 
             {/* events */}
             <Reveal className="dash-card span-2">

@@ -1,3 +1,4 @@
+import MemberNav from '../components/MemberNav'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useAuth } from '../lib/auth'
@@ -195,6 +196,7 @@ export default function Club() {
   return (
     <>
       <main className="club" id="main">
+        <MemberNav />
         <div className="wrap">
           <div className="club-head">
             <div>

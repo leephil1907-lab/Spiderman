@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import AuthLayout from '../components/AuthLayout'
+import AuthLayout, { authExit } from '../components/AuthLayout'
 import { Field, PasswordField } from '../components/Field'
 import { useAuth } from '../lib/auth'
 
@@ -15,7 +15,7 @@ export default function Login() {
   const submit = async (e) => {
     e.preventDefault()
     setErr(null); setBusy(true)
-    try { await login(f.email, f.password); nav(sp.get('next') || '/dashboard', { replace: true }) }
+    try { await login(f.email, f.password, authExit); nav(sp.get('next') || '/dashboard', { replace: true }) }
     catch (e2) { setErr(e2.message) } finally { setBusy(false) }
   }
   return (
@@ -29,7 +29,7 @@ export default function Login() {
         <PasswordField label="Password" autoComplete="current-password" required value={f.password}
           onChange={(e) => setF({ ...f, password: e.target.value })}
           aside={<Link to="/forgot-password">Forgot password?</Link>} />
-        <button className="btn btn-primary btn-block" disabled={busy || !f.email || !f.password}>{busy ? 'Logging in…' : 'Log in'}</button>
+        <button className="btn btn-primary btn-block" disabled={busy || !f.email || !f.password}>{busy ? <><span className="btn-spin" aria-hidden="true" />Logging in…</> : 'Log in'}</button>
       </form>
       <p className="auth-foot">New here? <Link to={`/signup${sp.get('next') ? `?next=${encodeURIComponent(sp.get('next'))}` : ''}`}>Join the club, free</Link></p>
     </AuthLayout>

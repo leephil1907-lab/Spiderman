@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import AuthLayout from '../components/AuthLayout'
+import AuthLayout, { authExit } from '../components/AuthLayout'
 import { Field, PasswordField } from '../components/Field'
 import { useAuth } from '../lib/auth'
 import { tierById } from '../../shared/tiers.js'
@@ -45,7 +45,7 @@ function SignupForm() {
     if (Object.keys(v).length) return
     setBusy(true)
     try {
-      await signup({ name: f.name, email: f.email, password: f.password, country: f.country })
+      await signup({ name: f.name, email: f.email, password: f.password, country: f.country }, authExit)
       if (plan && plan !== 'free') nav(`/membership?plan=${plan}&billing=${sp.get('billing') === 'year' ? 'year' : 'month'}`, { replace: true })
       else nav(sp.get('next') || '/dashboard?welcome=1', { replace: true })
     } catch (e2) {
@@ -79,7 +79,7 @@ function SignupForm() {
           <span>I’ll keep spoilers tagged and be decent to other fans, and I accept the <Link to="/terms" style={{ color: 'var(--color-text)' }}>Terms</Link> and <Link to="/privacy" style={{ color: 'var(--color-text)' }}>Privacy Policy</Link>.</span>
         </label>
         {err.agree && <div className="field-error" style={{ marginTop: -8 }}>{err.agree}</div>}
-        <button className="btn btn-primary btn-block" disabled={busy}>{busy ? 'Creating your card…' : 'Create account'}</button>
+        <button className="btn btn-primary btn-block" disabled={busy}>{busy ? <><span className="btn-spin" aria-hidden="true" />Creating your card…</> : 'Create account'}</button>
       </form>
       <p className="auth-foot">Already a member? <Link to="/login">Log in</Link></p>
     </AuthLayout>

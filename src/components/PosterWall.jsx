@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react'
+import { X, ChevronLeft, ChevronRight, Maximize2, ArrowUpRight } from 'lucide-react'
+import { SAGA_LINKS } from '../content/film'
 import { Reveal } from './Motion'
 
 export const BND_POSTERS = [
@@ -84,7 +85,7 @@ export default function PosterWall() {
               <Poster id={p.id} alt={p.alt} />
               <span className="pw-glare" aria-hidden="true" />
             </button>
-            <span className="pw-saga-meta"><span className="pw-year">{p.year}</span><b>{p.title}</b>{p.now && <span className="tag hot">Now playing</span>}</span>
+            <span className="pw-saga-meta"><span className="pw-year">{p.year}</span><b>{p.title}</b>{p.now ? <span className="tag hot">Now playing</span> : SAGA_LINKS[p.id] && <a className="pw-get" href={SAGA_LINKS[p.id]} target="_blank" rel="noopener noreferrer" aria-label={`Get ${p.title} on Digital, 4K and Blu-ray from Sony Pictures`}>Get it now<ArrowUpRight size={12} aria-hidden="true" /></a>}</span>
           </Reveal>
         ))}
       </ol>

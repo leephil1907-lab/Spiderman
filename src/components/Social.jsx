@@ -1,7 +1,7 @@
-import { siInstagram, siX, siTiktok, siYoutube, siDiscord } from 'simple-icons'
+import { siFacebook, siInstagram, siX, siTiktok, siYoutube, siDiscord } from 'simple-icons'
 import { SOCIAL } from '../content/film'
 
-const ICONS = { instagram: siInstagram, x: siX, tiktok: siTiktok, youtube: siYoutube, discord: siDiscord }
+const ICONS = { facebook: siFacebook, instagram: siInstagram, x: siX, tiktok: siTiktok, youtube: siYoutube, discord: siDiscord }
 /** Real brand glyphs from Simple Icons — each network's own mark, in one colour. */
 export function BrandIcon({ name, size = 18 }) {
   const i = ICONS[name]

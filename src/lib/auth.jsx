@@ -9,8 +9,9 @@ export function AuthProvider({ children }) {
   useEffect(() => { refresh() }, [refresh])
   const value = {
     user, setUser, refresh,
-    login: async (email, password) => { const d = await api('/auth/login', { method: 'POST', body: { email, password } }); setUser(d.user); return d.user },
-    signup: async (form) => { const d = await api('/auth/signup', { method: 'POST', body: form }); setUser(d.user); return d.user },
+    // `beforeSet` lets the auth pages finish their exit motion before the user state flips (and GuestOnly redirects)
+    login: async (email, password, beforeSet) => { const d = await api('/auth/login', { method: 'POST', body: { email, password } }); await beforeSet?.(); setUser(d.user); return d.user },
+    signup: async (form, beforeSet) => { const d = await api('/auth/signup', { method: 'POST', body: form }); await beforeSet?.(); setUser(d.user); return d.user },
     logout: async () => { await api('/auth/logout', { method: 'POST' }); setUser(null) },
   }
   return <AuthCtx.Provider value={value}>{children}</AuthCtx.Provider>

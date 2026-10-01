@@ -1,3 +1,4 @@
+import MemberNav from '../components/MemberNav'
 import { useCallback, useEffect, useState } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
 import { Send, Ticket, CircleCheck, Clock, Archive, ChevronDown, CircleUserRound, LoaderCircle, MailCheck } from 'lucide-react'
@@ -124,6 +125,7 @@ export function MyTickets() {
   return (
     <>
       <main className="club" id="main">
+        <MemberNav />
         <div className="wrap" style={{ maxWidth: 860 }}>
           <span className="eyebrow">Support</span>
           <h1 className="h-2" style={{ fontSize: 'clamp(28px,4vw,40px)', marginBottom: 8 }}>My tickets</h1>
