@@ -1,0 +1,17 @@
+/* Brand and install refinements layered on top of the full site stylesheet. */
+.nav { padding-top: 12px; padding-bottom: 12px; }
+.brand { gap: 12px; font-size: 16px; min-height: 42px; }
+.brand-mark { width: 42px !important; height: 42px !important; flex: 0 0 42px; border-radius: 12px; box-shadow: 0 8px 24px color-mix(in srgb, var(--color-accent-figure) 30%, transparent), inset 0 0 0 1px rgba(255,255,255,.16); }
+.brand-copy { display: inline-grid; line-height: 1; gap: 4px; }
+.brand-copy b { font-size: 17px; letter-spacing: .08em; }
+.brand small { font-size: 9px; font-weight: 700; letter-spacing: .16em; }
+@media (max-width: 820px) {
+  .nav { padding-top: 10px; padding-bottom: 10px; }
+  .nav-links { inset: 66px 12px auto 12px; }
+}
+
+/* The hero must remain visibly Spider-Man-led even if an external film asset is unavailable. */
+.poster img[src$="spider-man-male.svg"] { object-fit: contain; height: 82%; width: auto; margin: auto; }
+
+/* Installable app identity: make the install surface unmistakably branded. */
+.install-brand { display: inline-flex; align-items: center; gap: 10px; }
