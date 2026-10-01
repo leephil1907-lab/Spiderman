@@ -45,7 +45,7 @@ export default function Account() {
   const exportData = async () => {
     const r = await fetch('/api/account/export', { credentials: 'same-origin' })
     const blob = await r.blob()
-    const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: `bnd-fan-club-${user.memberNo}.json` })
+    const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: `brand-new-day-${user.memberNo}.json` })
     a.click(); URL.revokeObjectURL(a.href)
   }
   const del = async (e) => {
