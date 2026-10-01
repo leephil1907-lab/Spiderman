@@ -26,9 +26,9 @@ export default function Nav() {
   return (
     <header className={`nav ${solid ? 'solid' : ''}`}>
       <a href="#main" className="skip">Skip to content</a>
-      <Link to="/" className="brand" aria-label="BND Fan Club — home">
+      <Link to="/" className="brand" aria-label="Spider-Man: Brand New Day — home">
         <SpiderBadge size={42} />
-        <span className="brand-copy"><b>BND</b><small>FAN CLUB</small></span>
+        <span className="brand-copy"><b>SPIDER-MAN</b><small>BRAND NEW DAY</small></span>
       </Link>
       <button className="nav-burger" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="main-nav" onClick={() => setOpen((o) => !o)}>
         {open ? <X size={20} strokeWidth={1.75} /> : <Menu size={20} strokeWidth={1.75} />}
