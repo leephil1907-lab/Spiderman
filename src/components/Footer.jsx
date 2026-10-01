@@ -15,8 +15,8 @@ export default function Footer() {
       <div className="wrap">
         <div className="footer-top">
           <div className="footer-brand">
-            <Link to="/" className="brand" aria-label="Spider-Man: Brand New Day — home"><SpiderBadge size={30} /> SPIDER-MAN <small>BRAND NEW DAY</small></Link>
-            <p className="muted" style={{ maxWidth: '38ch', marginTop: 12 }}>The worldwide club for fans of <i>Spider-Man: Brand New Day</i>. Members in every time zone.</p>
+            <Link to="/" className="brand" aria-label="Brand New Day — home"><SpiderBadge size={30} /> BRAND NEW DAY <small>SPIDER-MAN</small></Link>
+            <p className="muted" style={{ maxWidth: '38ch', marginTop: 12 }}>The Brand New Day website for Spider-Man fans, with the Fan Club built right in. Members in every time zone.</p>
             <ul className="footer-contact">
               <li><Mail size={15} strokeWidth={1.75} aria-hidden="true" /><a href={`mailto:${COMPANY.supportEmail}`}>{COMPANY.supportEmail}</a></li>
               <li><MessageCircle size={15} strokeWidth={1.75} aria-hidden="true" /><button className="linkish" onClick={() => openChat()}>Live chat</button></li>
@@ -26,7 +26,7 @@ export default function Footer() {
           </div>
           <nav className="footer-cols" aria-label="Footer">
             <div><h3>Film</h3><Link to="/#film">Overview</Link><Link to="/#cast">Cast</Link><Link to="/#trailer">Trailer</Link><Link to="/#watch">Where to watch</Link></div>
-            <div><h3>Club</h3><Link to="/membership">Membership tiers</Link><Link to="/dashboard">My dashboard</Link><Link to="/club">Members area</Link><Link to="/signup">Join free</Link></div>
+            <div><h3>Fan Club</h3><Link to="/membership">Membership tiers</Link><Link to="/dashboard">My dashboard</Link><Link to="/club">Members area</Link><Link to="/signup">Join free</Link></div>
             <div><h3>Support</h3><Link to="/help">Help centre</Link><button className="linkish" onClick={() => openChat()}>Live chat</button><a href={`mailto:${COMPANY.supportEmail}`}>Contact us</a><Link to="/refunds">Refunds</Link></div>
             <div><h3>Legal</h3><Link to="/privacy">Privacy Policy</Link><Link to="/terms">Terms of Use</Link><Link to="/privacy#cookies">Cookie Policy</Link><Link to="/refunds">Refund Policy</Link><Link to="/accessibility">Accessibility</Link></div>
           </nav>
