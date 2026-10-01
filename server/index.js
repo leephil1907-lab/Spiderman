@@ -373,7 +373,7 @@ if (fs.existsSync(dist)) {
 await bootstrapAdmins()
 getSettings()
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`BND Fan Club API on :${PORT}  (payments: ${PROVIDER_SUMMARY}, mail: ${MAIL_MODE}, demo reset links: ${DEMO ? 'on' : 'off'})`)
+  console.log(`BND Fan Club API on :${PORT}  (payments: ${PROVIDER_SUMMARY}, mail: ${MAIL_MODE})`)
   if (!process.env.ADMIN_EMAILS) console.log('⚠️  ADMIN_EMAILS is not set — the control panel is unreachable.')
   if (!process.env.ADMIN_PATH) console.log(`ℹ️  ADMIN_PATH not set; generated panel path stored in the database: ${adminPath()}`)
 })
