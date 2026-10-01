@@ -18,7 +18,7 @@ import { mountSupport } from './support.js'
 import { isCountry } from '../shared/countries.js'
 
 const PORT = +process.env.PORT || 3001
-const DEMO = process.env.DEMO_MODE !== '0' // on by default until email is wired
+const DEMO = process.env.DEMO_MODE === '1' // explicit opt-in for development only
 const SITE_URL = (process.env.SITE_URL || process.env.VITE_SITE_URL || readEnvFile().VITE_SITE_URL || '').replace(/\/$/, '')
 function readEnvFile() {
   try { return Object.fromEntries(fs.readFileSync(path.resolve('.env'), 'utf8').split('\n').filter((l) => /^\w+=/.test(l)).map((l) => [l.split('=')[0], l.slice(l.indexOf('=') + 1).trim()])) } catch { return {} }
