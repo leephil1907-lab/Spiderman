@@ -21,11 +21,9 @@ export const FILM = {
   // Official Sony Pictures Entertainment final trailer supplied by the project owner.
   trailerYouTubeId: 'P3uI5sLosKU',
   trailerUrl: 'https://youtu.be/P3uI5sLosKU',
-  // Existing film key art asset used for the hero poster.
-  posterSrc: 'https://s.movieinsider.com/images/p/600/964462_m1773880192.jpg',
-  // Official film media destinations. The Sony gallery exposes the current trailer
-  // lineup and official promotional stills/posters; the trailer thumbnail is from
-  // the official Sony Pictures Entertainment YouTube upload.
+  // The official trailer thumbnail is a real film asset and keeps the hero imagery
+  // anchored to the masculine Spider-Man presentation rather than a placeholder plate.
+  posterSrc: 'https://i.ytimg.com/vi/P3uI5sLosKU/maxresdefault.jpg',
   officialFilmUrl: 'https://www.sonypictures.com/movies/spidermanbrandnewday',
   officialGalleryUrl: 'https://spidermanbrandnewday.movie/gallery/',
   trailerThumbnail: 'https://i.ytimg.com/vi/P3uI5sLosKU/maxresdefault.jpg',
