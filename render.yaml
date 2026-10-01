@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: brand-new-day-fan-club
+    runtime: node
+    plan: free
+    branch: main
+    autoDeploy: true
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: DATA_DIR
+        value: /var/data
+      - key: NODE_ENV
+        value: production
+    disk:
+      name: brand-new-day-data
+      mountPath: /var/data
+      sizeGB: 1
