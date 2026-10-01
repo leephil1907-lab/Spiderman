@@ -15,7 +15,7 @@ export function TrailerPlayer() {
       <Reveal className="video tp-stage">
         {playing ? (
           <iframe key={t.id} src={`https://www.youtube-nocookie.com/embed/${t.id}?rel=0&autoplay=1`} title={`${FILM.title} — ${t.title}`}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />
         ) : (
           <button className="tp-facade" onClick={() => setPlaying(true)} aria-label={`Play ${t.title}`}>
             <picture key={t.id}>

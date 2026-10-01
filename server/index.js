@@ -40,7 +40,7 @@ if (process.env.DEBUG) {
 // basic hardening headers (no CSP framing block — the preview embeds the site)
 app.use((req, res, next) => {
   res.setHeader('X-Content-Type-Options', 'nosniff')
-  res.setHeader('Referrer-Policy', 'same-origin')
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin') // YouTube embeds need the origin (error 153 otherwise); paths are never sent cross-site
   next()
 })
 
