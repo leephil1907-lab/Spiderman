@@ -18,7 +18,6 @@ import { mountSupport } from './support.js'
 import { isCountry } from '../shared/countries.js'
 
 const PORT = +process.env.PORT || 3001
-const DEMO = process.env.DEMO_MODE === '1' // explicit opt-in for development only
 const SITE_URL = (process.env.SITE_URL || process.env.VITE_SITE_URL || readEnvFile().VITE_SITE_URL || '').replace(/\/$/, '')
 function readEnvFile() {
   try { return Object.fromEntries(fs.readFileSync(path.resolve('.env'), 'utf8').split('\n').filter((l) => /^\w+=/.test(l)).map((l) => [l.split('=')[0], l.slice(l.indexOf('=') + 1).trim()])) } catch { return {} }
@@ -142,8 +141,7 @@ app.post('/api/auth/forgot', async (req, res) => {
   const origin = `${req.protocol}://${req.get('host')}`
   const link = `${origin}/reset-password?token=${token}`
   await send({ to: user.email, subject: 'Reset your BND Fan Club password', text: `Hi ${user.name},\nReset your password: ${link}\nThis link expires in 30 minutes. If you didn’t ask for this, ignore this email.` })
-  // the on-screen demo link is never offered for admin accounts
-  res.json(DEMO && !isAdmin(user) ? { ...generic, demoLink: `/reset-password?token=${token}` } : generic)
+  res.json(generic)
 })
 
 app.get('/api/auth/reset/check', (req, res) => res.json({ valid: !!findReset(String(req.query.token || '')) }))
