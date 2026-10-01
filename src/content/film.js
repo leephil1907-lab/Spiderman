@@ -20,8 +20,8 @@ export const FILM = {
   ],
   // Official Sony Pictures Entertainment final trailer.
   trailerYouTubeId: 'P3uI5sLosKU',
-  // Add a licensed official key-art file under public/media and set its path here.
-  posterSrc: '',
+  // Film key art used as the visual poster treatment.
+  posterSrc: 'https://s.movieinsider.com/images/p/600/964462_m1773880192.jpg',
 }
 
 export const CAST = [
