@@ -1,8 +1,8 @@
 {
   "id": "/?source=pwa",
-  "name": "Spider-Man: Brand New Day",
+  "name": "Brand New Day",
   "short_name": "Brand New Day",
-  "description": "Spider-Man: Brand New Day — trailers, film media, cast, where to watch and a dedicated fan club.",
+  "description": "Brand New Day — Spider-Man trailers, film media, cast, where to watch and the dedicated Fan Club.",
   "start_url": "/?source=pwa",
   "scope": "/",
   "display": "standalone",
