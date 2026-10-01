@@ -9,7 +9,7 @@ export const TIERS = [
     level: 'Tier 1',
     rank: 0,
     price: { month: 0, year: 0 },
-    tagline: 'Join the club. No card needed.',
+    tagline: 'Join the club. Your digital member card is included.',
     perks: ['Digital member card', 'Fan Theory Board (read + post)', 'Trivia challenge + global leaderboard', 'Personal dashboard', 'Club newsletter'],
   },
   {
