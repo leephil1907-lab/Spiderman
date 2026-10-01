@@ -11,8 +11,6 @@ export default function Nav() {
   const loc = useLocation()
   const nav = useNavigate()
   useEffect(() => setOpen(false), [loc.pathname, loc.hash])
-  // solid bar off the film; transparent over it. Only toggles on a threshold
-  // crossing, so React does not re-render per scroll frame.
   useEffect(() => {
     const onHome = loc.pathname === '/'
     const check = () => {
@@ -29,8 +27,8 @@ export default function Nav() {
     <header className={`nav ${solid ? 'solid' : ''}`}>
       <a href="#main" className="skip">Skip to content</a>
       <Link to="/" className="brand" aria-label="BND Fan Club — home">
-        <SpiderBadge size={28} />
-        BND <small>FAN CLUB</small>
+        <SpiderBadge size={42} />
+        <span className="brand-copy"><b>BND</b><small>FAN CLUB</small></span>
       </Link>
       <button className="nav-burger" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="main-nav" onClick={() => setOpen((o) => !o)}>
         {open ? <X size={20} strokeWidth={1.75} /> : <Menu size={20} strokeWidth={1.75} />}
