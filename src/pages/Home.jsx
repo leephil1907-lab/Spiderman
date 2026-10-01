@@ -5,6 +5,7 @@ import ScrollFilm from '../components/ScrollFilm'
 import TierCards, { BillingToggle } from '../components/TierCards'
 import Footer from '../components/Footer'
 import { SpiderMark, MarvelLogo } from '../components/Brand'
+import PosterWall from '../components/PosterWall'
 import { Reveal, Marquee, CountUp, Countdown, useSpotlight } from '../components/Motion'
 import { FILM, CAST, TIMELINE, CINEMA_REGIONS, IMAX, regionForCountry } from '../content/film'
 import { useAuth } from '../lib/auth'
@@ -67,7 +68,7 @@ function FilmMedia() {
           </Reveal>
           <Reveal delay={80}>
             <a href={FILM.officialGalleryUrl} target="_blank" rel="noopener noreferrer" className="media-tile media-poster" aria-label="Open the official Spider-Man Brand New Day gallery">
-              <img src={FILM.posterSrc} alt="Spider-Man: Brand New Day promotional artwork" loading="lazy" />
+              <img src="/media/bnd-ninjas.jpg" alt="Spider-Man: Brand New Day official poster artwork" loading="lazy" />
               <span className="media-overlay"><Images size={18} /><span><b>Official Gallery</b><small>Posters, trailers and film imagery</small></span><ArrowUpRight size={16} /></span>
             </a>
           </Reveal>
@@ -79,6 +80,7 @@ function FilmMedia() {
             </a>
           </Reveal>
         </div>
+        <PosterWall />
       </div>
     </section>
   )

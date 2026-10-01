@@ -23,7 +23,7 @@ export const FILM = {
   trailerUrl: 'https://youtu.be/P3uI5sLosKU',
   // The official trailer thumbnail is a real film asset and keeps the hero imagery
   // anchored to the masculine Spider-Man presentation rather than a placeholder plate.
-  posterSrc: 'https://i.ytimg.com/vi/P3uI5sLosKU/maxresdefault.jpg',
+  posterSrc: '/media/bnd-reflection.jpg',
   officialFilmUrl: 'https://www.sonypictures.com/movies/spidermanbrandnewday',
   officialGalleryUrl: 'https://spidermanbrandnewday.movie/gallery/',
   trailerThumbnail: 'https://i.ytimg.com/vi/P3uI5sLosKU/maxresdefault.jpg',
