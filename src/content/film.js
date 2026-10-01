@@ -18,10 +18,17 @@ export const FILM = {
     'Four years after the world forgot Peter Parker, he is Spider-Man full time, guarding a New York that no longer knows his name and watching the people he loves move on without him.',
     'The pressure starts changing him in ways he may not be able to control, just as a new threat moves through the city: a villain no one can see.',
   ],
-  // Official Sony Pictures Entertainment final trailer.
+  // Official Sony Pictures Entertainment final trailer supplied by the project owner.
   trailerYouTubeId: 'P3uI5sLosKU',
-  // Film key art used as the visual poster treatment.
+  trailerUrl: 'https://youtu.be/P3uI5sLosKU',
+  // Existing film key art asset used for the hero poster.
   posterSrc: 'https://s.movieinsider.com/images/p/600/964462_m1773880192.jpg',
+  // Official film media destinations. The Sony gallery exposes the current trailer
+  // lineup and official promotional stills/posters; the trailer thumbnail is from
+  // the official Sony Pictures Entertainment YouTube upload.
+  officialFilmUrl: 'https://www.sonypictures.com/movies/spidermanbrandnewday',
+  officialGalleryUrl: 'https://spidermanbrandnewday.movie/gallery/',
+  trailerThumbnail: 'https://i.ytimg.com/vi/P3uI5sLosKU/maxresdefault.jpg',
 }
 
 export const CAST = [
