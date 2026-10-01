@@ -1,5 +1,5 @@
 import { Suspense, useEffect, useRef } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Link } from 'react-router-dom'
 import { ArrowUp } from 'lucide-react'
 import { P, ENV, OVERLAYS, gate, lin, gates, proveOverlap, toSp, clamp01 } from '../film'
@@ -49,6 +49,24 @@ function writeOverlay(r, sp) {
 }
 
 /** The ONLY writer of P. Runs first every frame (priority −1), before any scene useFrame. */
+// Pauses the whole render loop (JS + GPU) while the film is out of view; resumes 200px early.
+// Uses the r3f store directly, so no React re-render happens.
+function LoopGate() {
+  const setFrameloop = useThree((st) => st.setFrameloop)
+  useEffect(() => {
+    if (!('IntersectionObserver' in window)) return
+    let io, raf
+    const attach = () => {
+      if (!TRACK.el) { raf = requestAnimationFrame(attach); return }
+      io = new IntersectionObserver(([e]) => setFrameloop(e.isIntersecting ? 'always' : 'never'), { rootMargin: '200px 0px' })
+      io.observe(TRACK.el)
+    }
+    attach()
+    return () => { cancelAnimationFrame(raf); io?.disconnect(); setFrameloop('always') }
+  }, [setFrameloop])
+  return null
+}
+
 function Driver({ debugEl }) {
   const g = useRef({})
   useFrame(() => {
@@ -146,7 +164,9 @@ export default function ScrollFilm() {
             dpr={[1, ENV.mobile ? 1 : 1.5]}
             gl={{ antialias: false, powerPreference: 'high-performance', stencil: false }}
             camera={{ fov: 38, near: 0.1, far: 400, position: [0, 9, 34] }}
+            onCreated={({ gl }) => { requestAnimationFrame(() => gl.domElement.closest('.canvas-wrap')?.classList.add('ready')) }}
           >
+            <LoopGate />
             <Driver debugEl={debugEl} />
             <CameraRig />
             <Suspense fallback={null}>

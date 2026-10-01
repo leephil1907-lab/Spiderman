@@ -18,6 +18,7 @@ import Maintenance from './pages/Maintenance'
 import { useSettings } from './lib/settings'
 import { useAuth } from './lib/auth'
 import SupportChat from './components/SupportChat'
+import { RouteSkeleton } from './components/Skeleton'
 
 // the 3D film (three + r3f) is split out so auth/club pages load fast
 const Home = lazy(() => import('./pages/Home'))
@@ -75,7 +76,7 @@ export default function App() {
   const { pathname } = useLocation()
   if (settings?.site.maintenance && !user?.isAdmin && !MAINT_OPEN.includes(pathname)) {
     // signed-in admins bypass maintenance entirely (they sign in via /login, which stays open)
-    if (user === undefined) return <div className="page-loading" aria-busy="true" />
+    if (user === undefined) return <RouteSkeleton />
     return <><Meta /><Maintenance message={settings.site.maintenanceMessage} /></>
   }
   return (
@@ -84,7 +85,7 @@ export default function App() {
       <Meta />
       <AnnouncementBar />
       <Nav />
-      <Suspense fallback={<div className="page-loading" />}>
+      <Suspense fallback={<RouteSkeleton />}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<GuestOnly><Login /></GuestOnly>} />

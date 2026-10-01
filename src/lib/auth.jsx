@@ -1,3 +1,4 @@
+import { RouteSkeleton } from '../components/Skeleton'
 import { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
 import { api } from './api'
@@ -21,14 +22,14 @@ export const useAuth = () => useContext(AuthCtx)
 export function RequireAuth({ children }) {
   const { user } = useAuth()
   const loc = useLocation()
-  if (user === undefined) return <div className="page-loading" aria-busy="true" />
+  if (user === undefined) return <RouteSkeleton />
   if (!user) return <Navigate to={`/login?next=${encodeURIComponent(loc.pathname + loc.search)}`} replace />
   return children
 }
 export function GuestOnly({ children }) {
   const { user } = useAuth()
   const loc = useLocation()
-  if (user === undefined) return <div className="page-loading" aria-busy="true" />
+  if (user === undefined) return <RouteSkeleton />
   if (user) return <Navigate to={new URLSearchParams(loc.search).get('next') || '/dashboard'} replace />
   return children
 }

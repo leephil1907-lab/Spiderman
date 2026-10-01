@@ -1,4 +1,5 @@
 import MemberNav from '../components/MemberNav'
+import { ListSkeleton } from '../components/Skeleton'
 import { useCallback, useEffect, useState } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
 import { Send, Ticket, CircleCheck, Clock, Archive, ChevronDown, CircleUserRound, LoaderCircle, MailCheck } from 'lucide-react'
@@ -130,7 +131,7 @@ export function MyTickets() {
           <span className="eyebrow">Support</span>
           <h1 className="h-2" style={{ fontSize: 'clamp(28px,4vw,40px)', marginBottom: 8 }}>My tickets</h1>
           <p className="muted" style={{ marginTop: 0 }}>Your messages to the club team. Need something else? <Link to="/help#ticket">Open a new ticket</Link>.</p>
-          {tickets === null ? <div className="page-loading" /> : tickets.length === 0 ? (
+          {tickets === null ? <ListSkeleton rows={3} /> : tickets.length === 0 ? (
             <div className="dash-empty" style={{ marginTop: 24 }}><Ticket size={22} strokeWidth={1.5} aria-hidden="true" /><p className="muted">No tickets yet.</p><Link className="btn btn-sm" to="/help#ticket">Contact support</Link></div>
           ) : (
             <ul className="ticket-list">
@@ -168,7 +169,7 @@ export function TicketView() {
           <span className="eyebrow">Support ticket</span>
           {err ? (
             <div className="locked"><h1 className="h-2" style={{ fontSize: 28 }}>Ticket not found</h1><p className="muted">{err}</p><Link className="btn" to="/help#ticket">Contact support</Link></div>
-          ) : !ticket ? <div className="page-loading" /> : (
+          ) : !ticket ? <ListSkeleton rows={2} /> : (
             <>
               <h1 className="h-2" style={{ fontSize: 'clamp(26px,4vw,36px)', marginBottom: 6 }}>{ticket.subject}</h1>
               <div className="row" style={{ gap: 10, marginBottom: 20 }}><span className="faint">{ticket.ref} · {ticket.category}</span><StatusPill status={ticket.status} /></div>

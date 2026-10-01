@@ -196,11 +196,11 @@ export default function Home() {
             </Reveal>
             <Reveal delay={120}>
               <div className="poster">
-                {FILM.posterSrc ? <img src={FILM.posterSrc} alt={`${FILM.title} poster`} /> : (
+                {FILM.posterSrc ? <img src={FILM.posterSrc} alt={`${FILM.title} poster`} width="900" height="1350" loading="lazy" decoding="async" /> : (
                   <div className="poster-art" aria-hidden="true">
                     <SpiderMark size={520} className="poster-emblem" />
                     <div className="poster-logo"><MarvelLogo height={22} /></div>
-                    <img src="/plate.png" alt="" />
+                    <img src="/plate.webp" alt="" />
                     <div className="poster-title"><small>SPIDER-MAN</small>BRAND<br />NEW DAY</div>
                   </div>
                 )}

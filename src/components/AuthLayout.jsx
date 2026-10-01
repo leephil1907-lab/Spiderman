@@ -82,7 +82,7 @@ export default function AuthLayout({ children, line1 = 'Hold on.', line2 = 'Let 
         <div className="auth-logo"><MarvelLogo height={26} /></div>
         <div className="auth-fig">
           <span className="auth-thread" />
-          <img className="auth-spider" src="/plate.png" alt="" />
+          <img className="auth-spider" src="/plate.webp" alt="" />
         </div>
         <div className="quote" key={line1}><Words text={line1} base={0.55} /><br /><span className="muted-line"><Words text={line2} base={0.55 + line1.split(' ').length * 0.07 + 0.08} /></span></div>
         <div className="auth-scan" />

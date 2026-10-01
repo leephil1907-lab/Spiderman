@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from 'react'
+import { GenericSkeleton } from '../components/Skeleton'
 import { Link, useLocation } from 'react-router-dom'
 import { useAuth } from '../lib/auth'
 import { api } from '../lib/api'
@@ -22,8 +23,8 @@ export default function NotFound() {
     return () => { live = false }
   }, [user, pathname])
 
-  if (state.k === 'checking') return <div className="page-loading" aria-busy="true" />
-  if (state.k === 'panel') return <Suspense fallback={<div className="page-loading" aria-busy="true" />}><Panel unlocked={state.unlocked} /></Suspense>
+  if (state.k === 'checking') return <GenericSkeleton />
+  if (state.k === 'panel') return <Suspense fallback={<GenericSkeleton />}><Panel unlocked={state.unlocked} /></Suspense>
   return (
     <main className="club" id="main"><div className="wrap locked">
       <div className="h-display">404</div>

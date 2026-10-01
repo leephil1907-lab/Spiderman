@@ -15,6 +15,7 @@ import { TIERS, tierById, priceOf, hasTier } from '../../shared/tiers.js'
 import { formatMoney } from '../../shared/currency.js'
 import { openChat } from '../components/SupportChat'
 import MemberCard from '../components/MemberCard'
+import { Bone, ListSkeleton } from '../components/Skeleton'
 import { HOME_RELEASE } from '../content/film'
 
 const AREAS = [
@@ -72,7 +73,7 @@ export default function Dashboard() {
         <MemberNav />
         <div className="wrap">
           <Reveal className="dash-head dash-hero">
-            <div className="dash-hero-art" aria-hidden="true"><img src="/media/bnd-ninjas.jpg" alt="" /><img className="dash-hero-fig" src="/plate.png" alt="" /></div>
+            <div className="dash-hero-art" aria-hidden="true"><img src="/media/bnd-ninjas.jpg" alt="" /><img className="dash-hero-fig" src="/plate.webp" alt="" /></div>
             <div>
               <span className="eyebrow">Your dashboard</span>
               <h1 className="h-2">{greet}, {user.name.split(' ')[0]}.</h1>
@@ -121,6 +122,7 @@ export default function Dashboard() {
             <Reveal className="dash-card" delay={80}>
               <div className="row"><h2 className="dash-h">Get started</h2><span className="spacer" /><span className="faint tabular" style={{ fontSize: 13 }}>{doneSteps}/{steps.length || 4}</span></div>
               <div className="progress" aria-hidden="true"><i style={{ width: `${(doneSteps / (steps.length || 4)) * 100}%` }} /></div>
+              {!d && !err && <ListSkeleton rows={4} />}
               <ul className="checklist">
                 {steps.map(([label, ok, href]) => (
                   <li key={label} className={ok ? 'ok' : ''}>
@@ -141,7 +143,7 @@ export default function Dashboard() {
               ].map(([Icon, label, v, of]) => (
                 <div key={label} className="stat">
                   <Icon size={18} strokeWidth={1.75} aria-hidden="true" />
-                  <b>{v === undefined ? '—' : v === null ? '—' : <><CountUp to={v} />{of ? <small className="of">/{of}</small> : null}</>}</b>
+                  <b>{v === undefined ? <Bone w={56} h={34} /> : v === null ? '—' : <><CountUp to={v} />{of ? <small className="of">/{of}</small> : null}</>}</b>
                   <span>{label}</span>
                 </div>
               ))}
@@ -164,7 +166,7 @@ export default function Dashboard() {
             {/* events */}
             <Reveal className="dash-card span-2">
               <div className="row"><h2 className="dash-h">Your watch parties</h2><span className="spacer" /><Link className="dash-link" to="/club?tab=events">All parties<ChevronRight size={14} strokeWidth={1.75} aria-hidden="true" /></Link></div>
-              {d?.myEvents?.length ? (
+              {!d && !err ? <ListSkeleton rows={2} /> : d?.myEvents?.length ? (
                 <ul className="party-list">
                   {d.myEvents.map((e) => (
                     <li key={e.id}>
@@ -216,6 +218,7 @@ export default function Dashboard() {
             {/* activity */}
             <Reveal className="dash-card span-2">
               <h2 className="dash-h">Recent activity</h2>
+              {!d && !err && <ListSkeleton rows={3} />}
               <ul className="activity">
                 {(d?.activity || []).map((a, i) => {
                   const [Icon, text] = ACT[a.kind] || [Circle, () => a.label]

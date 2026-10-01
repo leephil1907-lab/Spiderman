@@ -1,5 +1,6 @@
 import './env.js'
 import express from 'express'
+import compression from 'compression'
 import cookieParser from 'cookie-parser'
 import crypto from 'node:crypto'
 import path from 'node:path'
@@ -23,6 +24,8 @@ function readEnvFile() {
   try { return Object.fromEntries(fs.readFileSync(path.resolve('.env'), 'utf8').split('\n').filter((l) => /^\w+=/.test(l)).map((l) => [l.split('=')[0], l.slice(l.indexOf('=') + 1).trim()])) } catch { return {} }
 }
 const app = express()
+// gzip text responses (JS/CSS/HTML/JSON) — the app bundle shrinks ~70% on the wire
+app.use(compression({ threshold: 1024 }))
 app.set('trust proxy', 1)
 app.disable('x-powered-by')
 app.use(express.json({ limit: '20kb' }))
@@ -366,6 +369,8 @@ app.get('/sitemap.xml', (req, res) => {
 // ── static app (production) ─────────────────────────────────────────────────
 const dist = path.resolve('dist')
 if (fs.existsSync(dist)) {
+  // hashed build files never change → cache for a year; everything else (images, sw.js) for an hour
+  app.use('/assets', express.static(path.join(dist, 'assets'), { index: false, immutable: true, maxAge: '1y' }))
   app.use(express.static(dist, { index: false, maxAge: '1h' }))
   app.get('*', (req, res) => res.sendFile(path.join(dist, 'index.html')))
 }

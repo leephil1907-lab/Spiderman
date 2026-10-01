@@ -1,3 +1,4 @@
+import { ListSkeleton } from '../components/Skeleton'
 import MemberNav from '../components/MemberNav'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
@@ -63,7 +64,7 @@ function Theories({ user }) {
         <button className="btn btn-primary" disabled={busy}>{busy ? 'Posting…' : 'Post theory'}</button>
       </form>
       <div className="stack" aria-live="polite">
-        {list === null && <p className="muted">Loading…</p>}
+        {list === null && <ListSkeleton rows={3} />}
         {list?.length === 0 && <div className="panel"><p className="muted">No theories yet. Be the first to call it.</p></div>}
         {list?.map((t) => (
           <article key={t.id} className="theory">
@@ -150,6 +151,7 @@ function Events() {
     <div className="stack">
       {err && <div className="alert alert-error" role="alert">{err}</div>}
       <div className="events">
+        {list === null && !err && <ListSkeleton rows={3} />}
         {list?.map((e) => {
           const d = new Date(e.starts_at)
           const f = (o, tz = e.tz) => new Intl.DateTimeFormat(undefined, { timeZone: tz, ...o }).format(d)
@@ -182,7 +184,7 @@ function Events() {
 function Gallery({ endpoint, render }) {
   const [data, setData] = useState(null)
   useEffect(() => { api(endpoint).then(setData).catch(() => setData({ items: [] })) }, [endpoint])
-  if (!data) return <p className="muted">Loading…</p>
+  if (!data) return <ListSkeleton rows={3} />
   if (!data.items?.length) return <div className="panel"><p className="muted">No content has been published here yet. Check back when the club team adds it.</p></div>
   return render(data.items)
 }
