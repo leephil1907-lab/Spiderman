@@ -10,7 +10,7 @@ export default function AuthLayout({ children, line1 = 'Hold on.', line2 = 'Let 
       <div className="auth-art" aria-hidden="true">
         <SpiderMark size={620} className="auth-emblem" />
         <div className="auth-logo"><MarvelLogo height={26} /></div>
-        <img className="auth-spider" src="/spider-man-male.svg" alt="" />
+        <img className="auth-spider" src="/plate.png" alt="" />
         <div className="quote">{line1}<br /><span>{line2}</span></div>
       </div>
       <div className="auth-main">

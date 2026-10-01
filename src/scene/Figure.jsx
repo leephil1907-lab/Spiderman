@@ -107,7 +107,7 @@ export default function Figure() {
 
   useEffect(() => {
     let alive = true
-    samplePlate('/spider-man-male.svg').then(({ W, H, data, keep, runOf, runs }) => {
+    samplePlate('/plate.png').then(({ W, H, data, keep, runOf, runs }) => {
       if (!alive || !mesh.current || !keep.length) return
       const rnd = mulberry(20261001)
       const m = mesh.current
